@@ -529,6 +529,21 @@
     }
   }
 
+  async function copyLink(p) {
+    const url = `${location.origin}/p/${encodeURIComponent(p.id)}`;
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      const area = el('textarea', { readonly: '', style: 'position:fixed;top:0;left:0;opacity:0' });
+      area.value = url;
+      document.body.append(area);
+      area.select();
+      try { document.execCommand('copy'); } catch { /* ignore */ }
+      area.remove();
+    }
+    toast('Link copied');
+  }
+
   const zeroStock = (p) => Object.fromEntries(Object.keys(p.stockBySize).map((k) => [k, 0]));
 
   function rowMenu(id, anchor) {
@@ -540,6 +555,7 @@
       p.archived
         ? { label: 'Unarchive', icon: 'archive', fn: () => patchProduct(p, { archived: false }, `${p.name} is back in the shop`, { archived: true }) }
         : { label: 'Archive (hide from shop)', icon: 'archive', fn: () => patchProduct(p, { archived: true }, `${p.name} archived`, { archived: false }) },
+      { label: 'Copy link', icon: 'copy', fn: () => copyLink(p) },
       { label: 'Duplicate', icon: 'copy', fn: () => duplicate(p) },
       { label: 'Edit', icon: 'edit', fn: () => openDrawer(p) },
       'hr',
@@ -788,7 +804,7 @@
       }
     }
     const blob = new Blob(['﻿' + rows.map((r) => r.map(cell).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
-    const a = el('a', { href: URL.createObjectURL(blob), download: `at-inventory-${new Date().toISOString().slice(0, 10)}.csv` });
+    const a = el('a', { href: URL.createObjectURL(blob), download: `luxury-store-inventory-${new Date().toISOString().slice(0, 10)}.csv` });
     document.body.append(a);
     a.click();
     a.remove();
@@ -905,8 +921,6 @@
     }
   }
 
-  const AT_PATH = new Path2D('M2 92 L32 6 L52 6 L82 92 L62 92 L42 34.7 L22 92 Z M52 6 H128 V26 H52 Z M92 26 H112 V92 H92 Z');
-
   async function loadCover(img) {
     if (img.kind === 'file') return loadBitmap(img.processed.full);
     const res = await fetch(img.url, { mode: 'cors' });
@@ -928,13 +942,15 @@
     ctx.imageSmoothingQuality = 'high';
     ctx.drawImage(source, (1200 - w) / 2, (630 - h) / 2, w, h);
     source.close();
+    try { await document.fonts.load('900 26px Unbounded'); } catch { /* fall back to system font */ }
     ctx.save();
-    ctx.translate(1092, 572);
-    ctx.scale(0.62, 0.62);
+    ctx.font = '900 26px Unbounded, Arial Black, Arial, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'alphabetic';
     ctx.fillStyle = '#111111';
-    ctx.fill(AT_PATH);
+    ctx.fillText('LUXURY STORE', 1160, 600);
     ctx.fillStyle = '#D9FF3F';
-    ctx.fillRect(116, 78, 14, 14);
+    ctx.fillRect(1160 - ctx.measureText('LUXURY STORE').width, 608, ctx.measureText('LUXURY STORE').width, 4);
     ctx.restore();
     let quality = 0.82;
     let blob = await canvasBlob(canvas, 'image/jpeg', quality);

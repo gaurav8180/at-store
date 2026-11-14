@@ -80,18 +80,14 @@
 .heart[aria-pressed="true"] .icon { fill: currentColor; }
 .heart--lg { position: static; border: 1.5px solid var(--ink); border-radius: var(--radius); }
 
-.card__add {
-  position: absolute; right: 8px; bottom: 8px; z-index: 2; display: inline-flex; align-items: center; gap: 0.4em;
-  height: 44px; padding: 0 0.9rem 0 0.7rem; background: var(--ink); color: var(--bg);
-  font: 700 0.75rem/1 var(--font-body); letter-spacing: 0.12em; text-transform: uppercase;
-  transition: opacity 0.25s, transform 0.4s var(--ease), background-color 0.2s, color 0.2s;
+.card__copy {
+  position: absolute; right: 8px; bottom: 8px; z-index: 2; display: grid; place-items: center;
+  width: 44px; height: 44px; background: var(--bg); color: var(--ink); border: 2px solid var(--ink); border-radius: var(--radius);
+  transition: background-color 0.2s, color 0.2s;
 }
-.card__add:hover { background: var(--lime); color: var(--ink); }
-.card__add[disabled] { display: none; }
-@media (hover: hover) {
-  .card__add { opacity: 0; transform: translateY(8px); }
-  .card:hover .card__add, .card:focus-within .card__add { opacity: 1; transform: none; }
-}
+.card__copy .icon { width: 20px; height: 20px; }
+.card__copy:hover, .card__copy.is-done { background: var(--lime); }
+.card__copy.is-done .icon { stroke-width: 3; }
 
 .card__body { padding-top: 12px; display: grid; gap: 4px; }
 .card__cat { color: var(--muted); }

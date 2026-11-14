@@ -1,22 +1,19 @@
-import { $, $$ } from './dom.js';
-import { fetchCategories, fetchConfig, fetchProduct, fetchProducts } from './api.js';
-import { cart, saved } from './store.js';
-import { configure, contactLink, displayNumber } from './whatsapp.js';
+import { $ } from './dom.js';
+import { fetchCategories, fetchProduct, fetchProducts } from './api.js';
+import { saved } from './store.js';
 import { getCategories, setCategoryList } from './format.js';
 import { motion } from './motion.js';
 import { createCatalogue } from './catalogue.js';
 import { heroLoading, renderHero } from './hero.js';
-import { needsOptions, syncHearts } from './card.js';
+import { syncHearts } from './card.js';
 import { createSheet } from './sheet.js';
-import { cartTarget, createDrawer, syncCartBadges } from './cart.js';
 import { categoryFromPath, categoryPath, migrateHash, productIdFromPath, pushProduct, restoreBase, setBase } from './router.js';
 import { toast } from './toast.js';
 
 const byId = new Map();
 const getProduct = (id) => byId.get(id);
-const baseTitle = location.pathname === '/' ? document.title : 'AT';
+const baseTitle = location.pathname === '/' ? document.title : 'Luxury Store';
 let pending = { origin: null, opts: {} };
-let previousCount = cart.count();
 
 const headerHeight = () => $('.site-header').offsetHeight;
 
@@ -70,26 +67,14 @@ async function route() {
     restoreBase();
     return;
   }
-  document.title = `${product.name} — AT`;
+  document.title = `${product.name} — Luxury Store`;
   sheet.show(product, pending.origin, pending.opts);
   pending = { origin: null, opts: {} };
 }
 
-function quickAdd(product, imgEl) {
-  if (needsOptions(product)) {
-    openProduct(product, imgEl, { focus: 'size' });
-    return;
-  }
-  cart.add({ id: product.id, size: product.sizes[0] || '', color: product.colors[0] || '', qty: 1 });
-  motion.fly(imgEl.currentSrc || imgEl.src, imgEl.getBoundingClientRect(), cartTarget());
-  toast(`${product.name} added`, { action: { label: 'View cart', run: () => drawer.open() } });
-}
-
-const drawer = createDrawer($('#drawer'), { getProduct, onBrowse: () => scrollToSection('#shop') });
-const sheet = createSheet($('#sheet'), { requestClose: closeProduct, openCart: () => drawer.open() });
+const sheet = createSheet($('#sheet'), { requestClose: closeProduct });
 const catalogue = createCatalogue({
   onOpen: (product, el) => openProduct(product, el),
-  onQuickAdd: quickAdd,
   onCategory: (slug) => {
     const path = categoryPath(slug);
     setBase(path);
@@ -112,7 +97,6 @@ function scrollToSection(hash) {
 }
 
 function wireStatic() {
-  $('#cart-open').addEventListener('click', () => drawer.open());
   document.addEventListener('click', (e) => {
     const catLink = e.target.closest?.('a[data-cat-link]');
     if (catLink) {
@@ -127,12 +111,6 @@ function wireStatic() {
     scrollToSection(link.getAttribute('href'));
   });
   window.addEventListener('popstate', route);
-  cart.subscribe(() => {
-    syncCartBadges();
-    const n = cart.count();
-    if (n > previousCount) $$('[data-cart-count]').forEach((el) => motion.bump(el));
-    previousCount = n;
-  });
   saved.subscribe(syncHearts);
 }
 
@@ -144,11 +122,6 @@ function paintCategoryLinks() {
     a.dataset.catLink = c.slug;
     return i ? [document.createElement('br'), a] : [a];
   }));
-}
-
-function applyConfig() {
-  $$('[data-wa]').forEach((a) => { a.href = contactLink(); });
-  $$('[data-wa-number]').forEach((el) => { el.textContent = displayNumber(); });
 }
 
 async function loadProducts() {
@@ -163,7 +136,6 @@ async function loadProducts() {
     paintCategoryLinks();
     buildMarquee();
     renderHero(products, { onOpen: (product, el) => openProduct(product, el) });
-    drawer.render();
   } catch {
     renderHero([], { onOpen: openProduct });
     catalogue.showError(loadProducts);
@@ -174,11 +146,9 @@ async function boot() {
   migrateHash();
   motion.init();
   heroLoading();
-  syncCartBadges();
   wireStatic();
 
   const fonts = Promise.race([document.fonts?.ready, new Promise((r) => setTimeout(r, 800))]);
-  fetchConfig().then((config) => { configure(config); applyConfig(); });
   const loaded = loadProducts().then(() => fonts);
   await motion.intro(loaded);
   motion.heroIntro();

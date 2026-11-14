@@ -79,27 +79,6 @@ function rise(els, { delay = 0, stagger = 40 } = {}) {
   });
 }
 
-function fly(src, fromRect, targetEl) {
-  if (still() || !fromRect || !targetEl) return Promise.resolve();
-  const w = 56;
-  const hgt = 70;
-  const to = targetEl.getBoundingClientRect();
-  const a = { x: fromRect.left + fromRect.width / 2, y: fromRect.top + fromRect.height / 2 };
-  const b = { x: to.left + to.width / 2, y: to.top + to.height / 2 };
-  const at = (p, s) => `translate(${p.x - w / 2}px, ${p.y - hgt / 2}px) scale(${s})`;
-  const node = Object.assign(document.createElement('img'), { className: 'fly', src, alt: '' });
-  node.style.width = `${w}px`;
-  node.style.height = `${hgt}px`;
-  document.body.append(node);
-  const anim = node.animate([{ transform: at(a, 1), opacity: 1 }, { transform: at(b, 0.2), opacity: 0.4 }], { duration: 600, easing: 'cubic-bezier(.5,0,.75,.4)' });
-  return anim.finished.catch(() => {}).finally(() => node.remove());
-}
-
-function bump(el) {
-  if (still() || !el) return;
-  el.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.4)' }, { transform: 'scale(1)' }], { duration: 350, easing: EASE });
-}
-
 async function intro(ready) {
   const el = document.getElementById('loader');
   if (!el) return;
@@ -140,8 +119,6 @@ export const motion = {
   flip,
   flipTo,
   rise,
-  fly,
-  bump,
   intro,
   heroIntro,
   refresh: () => gsapReady && window.ScrollTrigger.refresh(),

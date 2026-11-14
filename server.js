@@ -23,8 +23,7 @@ const {
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'atadmin';
-const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER || '918421524576';
-const BRAND = process.env.BRAND || 'AT';
+const BRAND = process.env.BRAND || 'Luxury Store';
 const TOKEN_TTL = 7 * 24 * 60 * 60;
 const SITE_URL = (process.env.SITE_URL || '').replace(/\/+$/, '');
 const OG_FALLBACK = '/assets/brand/og-image.png';
@@ -151,7 +150,7 @@ if (store.mount) store.mount(app);
 app.use(express.json({ limit: '1mb' }));
 
 app.get('/api/config', (req, res) => {
-  res.json({ whatsapp: WHATSAPP_NUMBER, brand: BRAND });
+  res.json({ brand: BRAND });
 });
 
 app.get('/api/products', wrap(async (req, res) => {
@@ -288,7 +287,7 @@ app.get(['/p/:id', '/p/:id/:slug'], wrap(async (req, res) => {
   const title = `${product.name} — ₹${inr(product.price)} | ${BRAND}`;
   sendPage(res, shareMeta({
     title,
-    description: summarize(product.description, `${product.name} by ${BRAND}. Order on WhatsApp.`),
+    description: summarize(product.description, `${product.name} from ${BRAND}.`),
     image: absolute(origin, product.ogImage || OG_FALLBACK),
     url: `${origin}/p/${encodeURIComponent(product.id)}`,
     type: 'product',
@@ -302,7 +301,7 @@ app.get('/c/:slug', wrap(async (req, res) => {
   const origin = siteOrigin(req);
   sendPage(res, shareMeta({
     title: `${category.name} | ${BRAND}`,
-    description: `Shop ${category.name} from ${BRAND}. Browse the drop and order on WhatsApp.`,
+    description: `Browse ${category.name} at ${BRAND}.`,
     image: absolute(origin, OG_FALLBACK),
     url: `${origin}/c/${encodeURIComponent(category.slug)}`,
     type: 'website',

@@ -3,13 +3,12 @@ import { categoryLabel, getCategories } from './format.js';
 import { saved } from './store.js';
 import { createCard } from './card.js';
 import { motion } from './motion.js';
-import { contactLink } from './whatsapp.js';
 
 const skeleton = () => h('div', { class: 'card', 'aria-hidden': 'true' },
   h('div', { class: 'card__media skel' }),
   h('div', { class: 'card__body' }, h('span', { class: 'skel skel--line' }), h('span', { class: 'skel skel--line skel--short' })));
 
-export function createCatalogue({ onOpen, onQuickAdd, onCategory = () => {} }) {
+export function createCatalogue({ onOpen, onCategory = () => {} }) {
   const grid = $('#grid');
   const chipsEl = $('#chips');
   const searchEl = $('#search');
@@ -87,7 +86,7 @@ export function createCatalogue({ onOpen, onQuickAdd, onCategory = () => {} }) {
     }
     if (phase === 'error') {
       grid.replaceChildren();
-      showState({ title: 'The rack won’t load.', text: 'Check your connection and try again.', action: { label: 'Try again', run: retry } });
+      showState({ title: 'The catalogue won’t load.', text: 'Check your connection and try again.', action: { label: 'Try again', run: retry } });
       return;
     }
     paintChips();
@@ -98,7 +97,7 @@ export function createCatalogue({ onOpen, onQuickAdd, onCategory = () => {} }) {
     if (!list.length) {
       grid.replaceChildren();
       if (!products.length) {
-        showState({ title: 'The rack is empty.', text: 'New pieces land soon. Ask us on WhatsApp what is coming next.', action: { label: 'Ask on WhatsApp', href: contactLink() } });
+        showState({ title: 'The catalogue is empty.', text: 'New pieces are added soon. Check back shortly.' });
       } else {
         showState({
           title: query ? `Nothing for “${query}”.` : 'Nothing here yet.',
@@ -109,7 +108,7 @@ export function createCatalogue({ onOpen, onQuickAdd, onCategory = () => {} }) {
       return;
     }
     const before = new Map([...grid.children].filter((c) => c.dataset?.id).map((c) => [c.dataset.id, c.getBoundingClientRect()]));
-    const cards = list.map((p) => createCard(p, { onOpen, onQuickAdd }));
+    const cards = list.map((p) => createCard(p, { onOpen }));
     grid.replaceChildren(...cards);
     const fresh = [];
     cards.forEach((card) => {

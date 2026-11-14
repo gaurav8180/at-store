@@ -1,4 +1,4 @@
-const FALLBACK_CONFIG = { whatsapp: '918421524576', brand: 'AT' };
+const FALLBACK_CONFIG = { brand: 'Luxury Store' };
 
 async function getJSON(url) {
   const res = await fetch(url, { headers: { Accept: 'application/json' } });

@@ -1,4 +1,4 @@
-# Deploy AT for free (Vercel + Supabase)
+# Deploy Luxury Store for free (Vercel + Supabase)
 
 - **Vercel** hosts the website and admin panel. It's free, always on, has HTTPS, and redeploys on every `git push`.
 - **Supabase** stores products, categories and full-quality images. It's free, with a 500 MB database and 1 GB of image storage.
@@ -20,14 +20,14 @@ Locally it saves to `data/` and `uploads/`, so it needs no setup.
 
 ## 1. Put the code on GitHub
 
-Create an **empty** repo on github.com (e.g. `at-store`, no README). Then:
+Create an **empty** repo on github.com (e.g. `luxury-store`, no README). Then:
 
 ```bash
-cd ~/Desktop/stitch-and-sole && git init -b main && git add . && git commit -m "feat: AT catalogue"
+cd ~/Desktop/stitch-and-sole && git init -b main && git add . && git commit -m "feat: Luxury Store catalogue"
 ```
 
 ```bash
-git remote add origin git@github.com:<your-username>/at-store.git && git push -u origin main
+git remote add origin git@github.com:<your-username>/luxury-store.git && git push -u origin main
 ```
 
 ---
@@ -35,7 +35,7 @@ git remote add origin git@github.com:<your-username>/at-store.git && git push -u
 ## 2. Create the Supabase project (database + images)
 
 1. Go to **supabase.com** → Sign in with GitHub → **New project**.
-   Name it `at-store`, set any database password (you won't need it again), and pick the **Mumbai** region. Click **Create**.
+   Name it `luxury-store`, set any database password (you won't need it again), and pick the **Mumbai** region. Click **Create**.
 2. When it's ready, open **SQL Editor** in the left sidebar, then **New query**. Paste the whole of
    [`supabase/setup.sql`](supabase/setup.sql) and click **Run**.
    This creates the tables, the image bucket and the 3 starting categories.
@@ -54,7 +54,7 @@ cd ~/Desktop/stitch-and-sole && SUPABASE_URL='https://xxxx.supabase.co' SUPABASE
 
 ## 3. Deploy on Vercel
 
-1. Go to **vercel.com** → Sign up with GitHub → **Add New… → Project** → import `at-store`.
+1. Go to **vercel.com** → Sign up with GitHub → **Add New… → Project** → import `luxury-store`.
 2. Leave the build settings as they are. `vercel.json` already configures everything.
 3. Open **Environment Variables** and add:
 
@@ -63,11 +63,10 @@ cd ~/Desktop/stitch-and-sole && SUPABASE_URL='https://xxxx.supabase.co' SUPABASE
 | `ADMIN_PASSWORD` | your admin password |
 | `SUPABASE_URL` | from step 2 |
 | `SUPABASE_SERVICE_ROLE_KEY` | from step 2 |
-| `WHATSAPP_NUMBER` | `918421524576` |
 
-4. Click **Deploy**. About a minute later you get `https://at-store-xxxx.vercel.app`.
+4. Click **Deploy**. About a minute later you get `https://luxury-store-xxxx.vercel.app`.
 5. Add one more variable, `SITE_URL` = that URL (no trailing slash), then go to
-   **Deployments → ⋯ → Redeploy**. This makes WhatsApp link previews use the correct address.
+   **Deployments → ⋯ → Redeploy**. This makes shared link previews use the correct address.
 
 Open `<your-url>/admin`, log in, and add a product. It shows up on the shop straight away.
 
@@ -87,5 +86,5 @@ name `SITE_URL`, value your Vercel URL. That's all.
 - **Change the code:** run `git push` and Vercel redeploys on its own.
 - **Change the admin password:** in Vercel, go to Settings → Environment Variables, edit `ADMIN_PASSWORD`, then Redeploy.
 - **Use your own domain (optional):** in Vercel, go to Settings → Domains, add it, and follow the DNS steps. Then update `SITE_URL`.
-- **WhatsApp preview not updating** after you change a price: WhatsApp caches link previews. New shares
+- **Link preview not updating** after you change a price: messaging apps cache link previews. New shares
   pick up the change within a few minutes.

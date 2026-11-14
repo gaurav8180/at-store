@@ -1,8 +1,8 @@
 {
-  "name": "at-store",
+  "name": "luxury-store",
   "version": "1.0.0",
   "private": true,
-  "description": "AT product catalogue for t-shirts, shoes and accessories",
+  "description": "Luxury Store product catalogue of curated pieces, each one link away",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

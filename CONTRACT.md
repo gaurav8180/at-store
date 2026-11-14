@@ -1,7 +1,7 @@
-# AT — build contract
+# Luxury Store — build contract
 
-Product catalogue for t-shirts, shoes and accessories. No user login.
-Visitors browse, open a product, add to a browser cart (localStorage), and order on WhatsApp.
+Product catalogue of curated pieces. No user login, no cart, no ordering.
+Visitors browse, open a product and copy its link (`/p/<id>`).
 One admin, password-protected, manages products, stock and categories.
 
 Hosting: Vercel (static `public/` + one serverless function for `/api`, `/p/*`, `/c/*`) and Supabase
@@ -33,7 +33,7 @@ public/admin/           admin panel: index.html, admin.css, admin.js
 
 ## Config (env)
 - `ADMIN_PASSWORD` default `atadmin`; `TOKEN_SECRET` optional (defaults to the password)
-- `WHATSAPP_NUMBER` default `918421524576`; `BRAND` default `AT` (both via GET /api/config)
+- `BRAND` default `Luxury Store` (via GET /api/config)
 - `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` switch on the Supabase driver
 - `SITE_URL` absolute origin for share links (falls back to the request host)
 - `.env` is loaded automatically if present (see `.env.example`).
@@ -64,7 +64,7 @@ public/admin/           admin panel: index.html, admin.css, admin.js
 ```
 - Prices are INR, whole rupees. `mrp` optional (show strike-through + % off when > price).
 - `stockBySize` keys are exactly `sizes`; a product with no sizes uses the single key `"ONE"`.
-  The storefront should disable sizes whose qty is 0.
+  The storefront shows sizes as information only and marks sizes whose qty is 0 as sold out.
 - `inStock` is derived server-side (total qty > 0 and not archived); it is ignored on input.
 - `thumbs` is optional and aligned with `images` (same index; falls back to the image itself).
   Use thumbs for cards/grids and `images` for the product view. The storefront may ignore it.
@@ -74,7 +74,7 @@ public/admin/           admin panel: index.html, admin.css, admin.js
 - Archived products are hidden from the public API but kept for the admin.
 
 ## API
-- `GET  /api/config` → `{ whatsapp: "918421524576", brand: "AT" }`
+- `GET  /api/config` → `{ brand: "Luxury Store" }`
 - `GET  /api/products` → Product[] newest first, archived excluded
 - `GET  /api/products/:id` → Product | 404 (archived → 404)
 - `POST /api/login` `{password}` → `{token}` (HMAC-signed, valid 7 days; 401 on bad password)
@@ -99,10 +99,11 @@ public/admin/           admin panel: index.html, admin.css, admin.js
   Local mode also serves `/uploads`.
 
 ## Storefront behaviour
-- Cart in `localStorage` key `ss_cart`: `[{id, size, color, qty}]`. Wishlist optional key `ss_saved`.
-- WhatsApp order: `https://wa.me/918421524576?text=<encoded>` — message lists item name, size,
-  color, qty, price, product link, and total. Single-product "Order on WhatsApp" and
-  cart "Order all on WhatsApp" both use this.
+- No cart and no ordering. Wishlist optional key `ss_saved`.
+- Product view: gallery, price, sizes and colours (informational), and one primary "Copy link" button
+  that copies `location.origin + '/p/' + id` (Clipboard API, hidden-textarea fallback) and shows a
+  "Link copied" toast. Each grid card has a small copy-link icon button (does not open the product view).
+- A native Share button (Web Share API, URL only) is shown only where `navigator.share` exists.
 
 ## Categories are dynamic (admin-managed)
 - `GET /api/categories` (public) → `[{slug, name, emoji?: null, sizes: ["S","M"...] | [], sort, visible}]` — only visible ones, ordered by `sort`.
@@ -111,18 +112,15 @@ public/admin/           admin panel: index.html, admin.css, admin.js
 - `Product.category` = a category slug. The storefront builds its filter tabs, hero marquee and nav from `/api/categories` — never hardcode category names.
 - A category's `sizes` is the default size set the admin form pre-fills for new products in it.
 
-## Shareable product links with WhatsApp previews (supersedes the hash route)
+## Shareable product links with previews
 - Product URLs are real paths: `/p/<id>` (optionally `/p/<id>/<slugified-name>`). Category URLs: `/c/<slug>`.
   Hash URLs `#/p/<id>` still work by redirecting to the path.
 - The server handles `GET /p/:id` (and `/c/:slug`) by returning `public/index.html` with per-page meta injected
-  into `<head>`: `<title>`, `description`, `og:title` ("<name> — ₹<price> | AT"), `og:description`, `og:image`
+  into `<head>`: `<title>`, `description`, `og:title` ("<name> — ₹<price> | Luxury Store"), `og:description`, `og:image`
   (absolute https URL), `og:image:width/height`, `og:url`, `og:type=product`, `product:price:amount`,
   `product:price:currency=INR`, `twitter:card=summary_large_image`. Unknown id → normal index with brand meta.
   Absolute URLs use `SITE_URL` env, falling back to the request host/proto (x-forwarded-proto aware).
-- WhatsApp crawler needs JPEG/PNG under ~300KB: the admin generates an `ogImage` per product in the browser
-  (1200×630 JPEG, quality ~0.82, product image centered on the brand off-white with a small AT mark),
+- Link-preview crawlers need JPEG/PNG under ~300KB: the admin generates an `ogImage` per product in the browser
+  (1200×630 JPEG, quality ~0.82, product image centered on the brand off-white with a small "LUXURY STORE" wordmark),
   uploaded with the other images. Product gains `ogImage?: string`; fallback is `/assets/brand/og-image.png`.
 - Storefront uses the History API for `/p/:id` and `/c/:slug` (back button closes the product sheet).
-- WhatsApp order messages include the full `/p/<id>` link for every item so the seller's chat shows the
-  product preview card. Product view also has a Share button: Web Share API on mobile, fallback menu with
-  "Share on WhatsApp" (`https://wa.me/?text=<name> ₹<price> <link>`) and "Copy link" with a toast.
