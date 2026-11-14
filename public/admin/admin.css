@@ -446,7 +446,7 @@ body.has-bulk .toasts { bottom: 96px; }
   .selects select { flex: 1; min-width: 0; }
   .seg-btn, .crumb { min-height: 44px; }
   .list { background: transparent; border: 0; border-radius: 0; overflow: visible; display: flex; flex-direction: column; gap: 10px; }
-  .list-head { display: flex; gap: 10px; padding: 0 4px; border: 0; background: transparent; }
+  .list-head { display: flex; gap: 10px; padding: 0 11px; border: 0; background: transparent; }
   .list-head > :not(.check) { display: none; }
   .list-head::after { content: "Select all"; text-transform: none; letter-spacing: 0; font-size: 13px; align-self: center; }
   .check { width: 44px; height: 44px; }
@@ -461,7 +461,10 @@ body.has-bulk .toasts { bottom: 96px; }
   .item .item-name { grid-area: name; }
   .item .price { display: none; }
   .item .item-name .mobile-price { display: inline; }
-  .item .stock { grid-area: stock; gap: 8px; }
+  .item .stock { grid-area: stock; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .item .stock .pill { grid-column: 1 / -1; justify-self: start; }
+  .item .stock .qty { display: flex; width: 100%; }
+  .item .stock .qty input { flex: 1; min-width: 0; width: auto; }
   .item .actions { grid-area: actions; align-self: start; }
   .item .pill { min-height: 36px; }
   .qty { min-height: 44px; border-radius: 12px; }

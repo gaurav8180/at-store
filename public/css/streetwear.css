@@ -15,7 +15,7 @@ main { overflow-x: clip; }
 
 .btn { border-width: 2px; box-shadow: var(--shadow); }
 .btn:active { translate: 3px 3px; box-shadow: 0 0 0 var(--ink); }
-.btn--primary:hover { background: #c9ed2b; }
+.btn--primary:hover { background: #c9ed2b; color: var(--ink); }
 .btn--dark:hover { background: #333; color: var(--bg); }
 .btn--ghost:hover { background: var(--bg-2); color: var(--ink); }
 .btn[disabled], .btn[aria-disabled="true"] { box-shadow: none; }
@@ -107,10 +107,9 @@ main { overflow-x: clip; }
   .pinfo__title { font-size: 1.35rem; }
   .sheet__body { padding-top: 12px; gap: 14px; }
   .gallery__thumbs, .gallery__nav { display: none; }
-  .sheet__bar .cart-btn { display: none; }
   .share__menu { top: auto; bottom: calc(100% + 10px); }
   .card__add--options { display: none; }
-  body:has(.sheet:not([hidden])) .toast, body:has(.drawer:not([hidden])) .toast { bottom: calc(96px + env(safe-area-inset-bottom)); }
+  body:has(.sheet:not([hidden])) .toast, body:has(.drawer:not([hidden])) .toast { bottom: calc(86px + env(safe-area-inset-bottom)); }
 }
 
 @media (min-width: 900px) {
@@ -140,3 +139,24 @@ main { overflow-x: clip; }
 
 @media (min-width: 720px) { .btn__stack { flex-direction: row; gap: 0.6em; align-items: baseline; } }
 @media (max-width: 719px) { .hero__meta span:nth-child(2) { display: none; } }
+
+/* Mobile polish: lighter chrome, thinner borders, smaller offset shadows */
+@media (max-width: 899px) {
+  :root { --header-h: 52px; --shadow: 2px 2px 0 var(--ink); }
+  .btn, .chip, .icon-btn, .cart-btn, .opt, .qty, .heart--lg, .card__media, .tile__img, .gallery__main, .cart-line__media, .toast { border-width: 1.5px; }
+  .btn:active, .chip:active, .cart-btn:active { translate: 2px 2px; }
+  .chip[aria-pressed="true"], .opt[aria-pressed="true"] { box-shadow: 2px 2px 0 var(--violet); }
+  .footer .btn { box-shadow: 2px 2px 0 var(--lime); }
+  .drawer__panel { box-shadow: -2px 0 0 var(--ink); }
+  .brand__mark { height: 26px; }
+  .filterbar__chips { padding-block: 6px; gap: 6px; border-block-width: 1.5px; }
+  .chip { height: 36px; padding: 0 0.75rem; font-size: 0.6875rem; letter-spacing: 0.08em; }
+  .sheet__bar .cart-btn { height: 40px; min-width: 40px; padding: 0 0.4rem 0 0.7rem; gap: 0.45rem; }
+  .pinfo__actions--sticky .btn { font-size: 0.6875rem; letter-spacing: 0.04em; gap: 0.45em; white-space: nowrap; }
+  .toast { padding: 8px 12px; gap: 12px; font-size: 0.8125rem; white-space: nowrap; }
+}
+@media (max-width: 719px) {
+  .hero__feature { display: none; }
+  .hero { padding-bottom: 14px; }
+  .section-head { padding-top: 22px; }
+}

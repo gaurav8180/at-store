@@ -245,7 +245,7 @@ export function createSheet(root, { requestClose, openCart }) {
         addBtn.classList.add('is-added');
         addBtn.replaceChildren(icon('check'), 'Added');
         setTimeout(() => { addBtn.classList.remove('is-added'); addBtn.textContent = 'Add to cart'; }, 1500);
-        toast(`${state.qty} × ${p.name} added`, { action: { label: 'View cart', run: openCart } });
+        toast(matchMedia('(max-width: 899px)').matches ? 'Added to cart' : `${state.qty} × ${p.name} added`, { action: { label: 'View cart', run: openCart } });
       },
     }, 'Add to cart');
 
