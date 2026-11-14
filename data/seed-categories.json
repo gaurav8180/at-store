@@ -1,0 +1,5 @@
+[
+  { "slug": "tshirts", "name": "T-Shirts", "emoji": null, "sizes": ["S", "M", "L", "XL", "XXL"], "sort": 0, "visible": true },
+  { "slug": "shoes", "name": "Shoes", "emoji": null, "sizes": ["6", "7", "8", "9", "10", "11"], "sort": 1, "visible": true },
+  { "slug": "accessories", "name": "Accessories", "emoji": null, "sizes": [], "sort": 2, "visible": true }
+]

@@ -1,0 +1,353 @@
+[
+  {
+    "id": "p_tee001",
+    "name": "Oversized Heavyweight Tee",
+    "category": "tshirts",
+    "price": 1299,
+    "mrp": 1799,
+    "description": "A 240 GSM combed-cotton tee cut boxy and dropped at the shoulder. Garment-washed for a soft, lived-in hand from day one, with a ribbed collar that keeps its shape.",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Bone",
+      "Black"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "Bestseller",
+    "featured": true,
+    "stockBySize": {
+      "S": 8,
+      "M": 14,
+      "L": 11,
+      "XL": 6
+    },
+    "lowStockAt": 3,
+    "archived": false,
+    "createdAt": "2026-10-30T09:30:00.000Z",
+    "updatedAt": "2026-11-10T11:20:00.000Z"
+  },
+  {
+    "id": "p_tee002",
+    "name": "Everyday Pocket Tee",
+    "category": "tshirts",
+    "price": 899,
+    "mrp": 1199,
+    "description": "The tee you reach for without thinking. Breathable 180 GSM cotton jersey, a clean chest pocket and a regular fit that works tucked or loose.",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "White",
+      "Olive",
+      "Navy"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "",
+    "featured": false,
+    "stockBySize": {
+      "S": 2,
+      "M": 5,
+      "L": 0,
+      "XL": 4,
+      "XXL": 1
+    },
+    "lowStockAt": 3,
+    "archived": false,
+    "createdAt": "2026-10-28T09:30:00.000Z",
+    "updatedAt": "2026-11-12T08:05:00.000Z"
+  },
+  {
+    "id": "p_tee003",
+    "name": "Washed Graphic Tee",
+    "category": "tshirts",
+    "price": 1499,
+    "description": "Hand-finished enzyme wash and a small-run back print that fades beautifully with wear. Relaxed through the body, slightly cropped in length.",
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Faded Black",
+      "Sand"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "Limited",
+    "featured": true,
+    "stockBySize": {
+      "M": 9,
+      "L": 12,
+      "XL": 7
+    },
+    "lowStockAt": 3,
+    "archived": false,
+    "createdAt": "2026-07-12T09:30:00.000Z",
+    "updatedAt": "2026-08-20T10:00:00.000Z"
+  },
+  {
+    "id": "p_tee004",
+    "name": "Linen Blend Camp Tee",
+    "category": "tshirts",
+    "price": 1699,
+    "mrp": 2199,
+    "description": "Cotton-linen jersey with a dry, airy drape built for humid evenings. Side vents and a slightly longer back hem for easy layering.",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Stone",
+      "Clay"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1622445275463-afa2ab738c34?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "New",
+    "featured": false,
+    "stockBySize": {
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0
+    },
+    "lowStockAt": 3,
+    "archived": false,
+    "createdAt": "2026-10-24T09:30:00.000Z",
+    "updatedAt": "2026-11-08T16:40:00.000Z"
+  },
+  {
+    "id": "p_shoe001",
+    "name": "Court Classic Sneaker",
+    "category": "shoes",
+    "price": 3499,
+    "mrp": 4499,
+    "description": "Full-grain leather upper on a stitched cupsole with a cushioned footbed. Minimal, durable, and easy to keep clean with a damp cloth.",
+    "sizes": [
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "colors": [
+      "White",
+      "Off-White"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "Bestseller",
+    "featured": true,
+    "stockBySize": {
+      "7": 4,
+      "8": 6,
+      "9": 7,
+      "10": 5,
+      "11": 4
+    },
+    "lowStockAt": 3,
+    "archived": false,
+    "createdAt": "2026-10-29T09:30:00.000Z",
+    "updatedAt": "2026-11-11T13:10:00.000Z"
+  },
+  {
+    "id": "p_shoe002",
+    "name": "Runner 02 Mesh Trainer",
+    "category": "shoes",
+    "price": 2999,
+    "mrp": 3999,
+    "description": "Engineered mesh with a lightweight EVA midsole and a grippy rubber outsole. Comfortable from morning commute to evening walk.",
+    "sizes": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "colors": [
+      "Grey",
+      "Black"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "New",
+    "featured": true,
+    "stockBySize": {
+      "6": 1,
+      "7": 3,
+      "8": 5,
+      "9": 6,
+      "10": 4,
+      "11": 2
+    },
+    "lowStockAt": 3,
+    "archived": false,
+    "createdAt": "2026-10-27T09:30:00.000Z",
+    "updatedAt": "2026-11-09T09:45:00.000Z"
+  },
+  {
+    "id": "p_shoe003",
+    "name": "Suede Low-Top",
+    "category": "shoes",
+    "price": 3999,
+    "description": "Soft Italian-finish suede over a vulcanised sole. Slim silhouette with tonal stitching and a padded collar for a no-fuss fit.",
+    "sizes": [
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "colors": [
+      "Tan",
+      "Slate"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "",
+    "featured": false,
+    "stockBySize": {
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    "lowStockAt": 3,
+    "archived": false,
+    "createdAt": "2026-06-15T09:30:00.000Z",
+    "updatedAt": "2026-08-30T12:00:00.000Z"
+  },
+  {
+    "id": "p_acc001",
+    "name": "Canvas Daypack",
+    "category": "accessories",
+    "price": 2199,
+    "mrp": 2799,
+    "description": "Waxed cotton canvas with a padded 15-inch laptop sleeve, YKK zips and leather-trimmed pulls. Holds a full workday without looking bulky.",
+    "sizes": [],
+    "colors": [
+      "Olive",
+      "Black"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "Bestseller",
+    "featured": true,
+    "stockBySize": {
+      "ONE": 15
+    },
+    "lowStockAt": 3,
+    "archived": false,
+    "createdAt": "2026-10-25T09:30:00.000Z",
+    "updatedAt": "2026-11-05T10:00:00.000Z"
+  },
+  {
+    "id": "p_acc002",
+    "name": "Everyday Cap",
+    "category": "accessories",
+    "price": 699,
+    "mrp": 999,
+    "description": "Six-panel unstructured cap in washed cotton twill with a tonal embroidered mark and a brass-buckle adjuster at the back.",
+    "sizes": [
+      "Free Size"
+    ],
+    "colors": [
+      "Khaki",
+      "Black",
+      "Navy"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "",
+    "featured": false,
+    "stockBySize": {
+      "Free Size": 22
+    },
+    "lowStockAt": 3,
+    "archived": false,
+    "createdAt": "2026-10-23T09:30:00.000Z",
+    "updatedAt": "2026-11-02T10:00:00.000Z"
+  },
+  {
+    "id": "p_acc003",
+    "name": "Acetate Sunglasses",
+    "category": "accessories",
+    "price": 1799,
+    "mrp": 2499,
+    "description": "Hand-polished acetate frames with UV400 polarised lenses. Light on the nose, with spring hinges that stay put through the day.",
+    "sizes": [
+      "Free Size"
+    ],
+    "colors": [
+      "Tortoise",
+      "Black"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "Limited",
+    "featured": false,
+    "stockBySize": {
+      "Free Size": 9
+    },
+    "lowStockAt": 3,
+    "archived": false,
+    "createdAt": "2026-06-02T09:30:00.000Z",
+    "updatedAt": "2026-07-28T10:00:00.000Z"
+  },
+  {
+    "id": "p_acc004",
+    "name": "Field Watch 38",
+    "category": "accessories",
+    "price": 4999,
+    "mrp": 5999,
+    "description": "A 38 mm steel case with a sapphire-coated crystal, Japanese quartz movement and a quick-release leather strap. Water resistant to 50 m.",
+    "sizes": [
+      "Free Size"
+    ],
+    "colors": [
+      "Steel / Brown"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&q=80&auto=format&fit=crop"
+    ],
+    "badge": "New",
+    "featured": true,
+    "stockBySize": {
+      "Free Size": 5
+    },
+    "lowStockAt": 2,
+    "archived": false,
+    "createdAt": "2026-10-20T09:30:00.000Z",
+    "updatedAt": "2026-11-01T10:00:00.000Z"
+  }
+]

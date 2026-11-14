@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AT — Tees, Shoes &amp; More</title>
+  <meta name="description" content="Tees, shoes and accessories. Pick what you like and order on WhatsApp.">
+  <meta name="theme-color" content="#F4F1EA">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AT">
+  <meta property="og:title" content="AT — Tees, Shoes &amp; More">
+  <meta property="og:description" content="Pick what you like and order on WhatsApp.">
+  <meta property="og:image" content="/assets/brand/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&amp;family=Unbounded:wght@500;700;800;900&amp;display=swap">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/catalogue.css">
+  <link rel="stylesheet" href="/css/overlays.css">
+  <link rel="stylesheet" href="/css/streetwear.css">
+</head>
+<body>
+  <div class="loader" id="loader" aria-hidden="true"><svg class="loader__mark" viewBox="0 0 132 100" aria-hidden="true" focusable="false"><defs><mask id="st2" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="100"><rect width="128" height="100" fill="#fff"/><line x1="0" y1="64" x2="128" y2="64" stroke="#000" stroke-width="5" stroke-dasharray="7 5"/></mask></defs><g fill="currentColor" mask="url(#st2)"><path d="M2 92 L32 6 L52 6 L82 92 L62 92 L42 34.7 L22 92 Z"/><rect x="52" y="6" width="76" height="20"/><rect x="92" y="26" width="20" height="66"/></g><rect x="116" y="78" width="14" height="14" fill="#D9FF3F"/></svg></div>
+  <script>try{if(location.pathname!=='/'||sessionStorage.getItem('ss_seen')||matchMedia('(prefers-reduced-motion: reduce)').matches)document.getElementById('loader').hidden=true}catch(e){}</script>
+  <noscript><style>.loader{display:none}</style></noscript>
+  <a class="skip" href="#shop">Skip to products</a>
+
+  <div id="app">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="AT, back to top"><svg class="brand__mark" viewBox="0 0 132 100" aria-hidden="true" focusable="false"><defs><mask id="st1" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="100"><rect width="128" height="100" fill="#fff"/><line x1="0" y1="64" x2="128" y2="64" stroke="#000" stroke-width="5" stroke-dasharray="7 5"/></mask></defs><g fill="currentColor" mask="url(#st1)"><path d="M2 92 L32 6 L52 6 L82 92 L62 92 L42 34.7 L22 92 Z"/><rect x="52" y="6" width="76" height="20"/><rect x="92" y="26" width="20" height="66"/></g><rect x="116" y="78" width="14" height="14" fill="#D9FF3F" stroke="#111" stroke-width="3"/></svg></a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#shop">Shop</a>
+        <a href="#how">How to order</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="cart-btn" id="cart-open" type="button" aria-haspopup="dialog" data-cart-btn data-cart-target>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-btn__label">Cart</span>
+        <span class="cart-btn__count" data-cart-count>0</span>
+      </button>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <img class="hero__sticker" src="/assets/brand/at-sticker.svg" alt="" width="160" height="160" onerror="this.remove()">
+        <div class="hero__meta micro">
+          <span>Order on WhatsApp</span>
+          <span id="hero-cats"></span>
+        </div>
+        <h1 class="wordmark display" id="hero-title" aria-label="AT" data-lines>
+          <span class="line" aria-hidden="true"><span class="line__in"><span class="ch">A</span><span class="wordmark__amp"><span class="ch">T</span></span></span></span>
+        </h1>
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="hero__tag" data-reveal>Pick what you like, choose your size, and order on WhatsApp in one tap.</p>
+            <div class="hero__cta" data-reveal>
+              <a class="btn btn--primary btn--lg" href="#shop">Shop now
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="btn btn--ghost btn--lg" href="#how">How to order</a>
+            </div>
+          </div>
+          <div class="hero__feature" id="hero-feature" aria-label="Featured pieces"></div>
+        </div>
+      </section>
+
+      <div class="marquees" aria-hidden="true"><div class="marquee marquee--lime" id="marquee"></div></div>
+
+      <section class="shop" id="shop" aria-labelledby="shop-title">
+        <div class="section-head">
+          <p class="micro">Shop</p>
+          <h2 class="display section-title" id="shop-title" data-lines>
+            <span class="line"><span class="line__in"><span id="shop-title-text">All products</span> <sup class="count" id="shop-count">(0)</sup></span></span>
+          </h2>
+        </div>
+
+        <div class="filterbar" id="filterbar">
+          <div class="filterbar__chips" id="chips" role="group" aria-label="Filter by category"></div>
+          <div class="filterbar__tools">
+            <label class="field search">
+              <span class="sr">Search products</span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
+              <input id="search" type="search" placeholder="Search" autocomplete="off" enterkeyhint="search">
+            </label>
+            <label class="field sort">
+              <span class="sr">Sort by</span>
+              <select id="sort">
+                <option value="new">Newest</option>
+                <option value="low">Price: low to high</option>
+                <option value="high">Price: high to low</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <p class="sr" id="shop-status" role="status"></p>
+        <div class="grid" id="grid" aria-busy="true"></div>
+        <div class="state" id="state" hidden></div>
+      </section>
+
+      <section class="how" id="how" aria-labelledby="how-title">
+        <div class="how__head">
+          <p class="micro">How to order</p>
+          <h2 class="display section-title" id="how-title" data-lines>
+            <span class="line"><span class="line__in">Three</span></span>
+            <span class="line"><span class="line__in">steps.</span></span>
+          </h2>
+        </div>
+        <ol class="how__steps">
+          <li data-reveal><span class="how__n display">01</span><div><h3>Pick</h3><p>Open any piece, choose your size and colour, and add it to the cart.</p></div></li>
+          <li data-reveal><span class="how__n display">02</span><div><h3>Send</h3><p>Tap Order on WhatsApp. Your message is pre-written with every detail and the total.</p></div></li>
+          <li data-reveal><span class="how__n display">03</span><div><h3>Confirm</h3><p>We reply to confirm stock, delivery and payment. No accounts, no checkout forms.</p></div></li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer__top">
+        <p class="micro">Contact</p>
+        <h2 class="display footer__title" data-lines>
+          <span class="line"><span class="line__in">Got a question?</span></span>
+          <span class="line"><span class="line__in">Just say hi.</span></span>
+        </h2>
+        <a class="btn btn--primary btn--lg" href="#" data-wa target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.3 18.7L4 20Z"/><path d="M9 9.5c.3 2 2.5 4.2 4.6 4.6l1.2-1.2-1.8-1-.8.6c-.9-.4-1.7-1.2-2.1-2.1l.6-.8-1-1.8L9 9.5Z"/></svg>
+          <span class="btn__stack"><span>Chat on WhatsApp</span><span data-wa-number></span></span>
+        </a>
+      </div>
+      <div class="footer__grid">
+        <div><p class="micro">Order</p><p>Every order is placed and confirmed over WhatsApp.</p></div>
+        <div><p class="micro">Browse</p><p id="footer-cats"></p></div>
+      </div>
+      <div class="footer__legal micro">
+        <p>&copy; AT. All prices in INR.</p>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden></div>
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <noscript><p class="noscript">Please turn on JavaScript to see our products.</p></noscript>
+
+  <script src="/vendor/gsap/dist/gsap.min.js" defer></script>
+  <script src="/vendor/gsap/dist/ScrollTrigger.min.js" defer></script>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
